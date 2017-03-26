@@ -24,17 +24,17 @@
 |   ├── ├── ├── ├── user.tmpl-specs/
 |   ├── ├── ├── ├── ├── 10-empty.html
 |   ├── ├── ├── ├── ├── 20-simple.html
-|   ├── ├── ├── ├── ├── 30-extended.html
+|   └── └── └── └── └── 30-extended.html
 |   └── ├── touch-pad
-|   └── ├── touch-phone
-|   └── yamoney-project
-|   └── ├── common.blocks
+|   └── └── touch-phone
+|   ├── yamoney-project
+|   ├── ├── common.blocks
 |   ├── ├── ├── user/
 |   ├── ├── ├── ├── user.tmpl-specs/
 |   ├── ├── ├── ├── ├── 10-empty.html
 |   ├── ├── ├── ├── ├── 20-simple.html
-|   ├── ├── ├── ├── ├── 30-extended.html
-|   └── ├── desktop.blocks
+|   └── └── └── └── └── 0-extended.html
+|   └── └── desktop.blocks
 ```
 
 В данном примере произойдет следующее:
