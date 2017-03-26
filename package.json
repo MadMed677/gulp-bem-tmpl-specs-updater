@@ -1,0 +1,31 @@
+{
+  "name": "gulp-bem-tmpl-specs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadMed677/gulp-bem-tmpl-specs-updater.git"
+  },
+  "keywords": [
+    "bem",
+    "gulp",
+    "gulp",
+    "plugin"
+  ],
+  "author": "Anashev Artem, Nikolay Tolochnyy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MadMed677/gulp-bem-tmpl-specs-updater/issues"
+  },
+  "homepage": "https://github.com/MadMed677/gulp-bem-tmpl-specs-updater#readme",
+  "devDependencies": {
+    "async": "2.2.0",
+    "gulp-merge": "0.1.1",
+    "gulp-util": "3.0.8",
+    "through2": "2.0.3"
+  }
+}
