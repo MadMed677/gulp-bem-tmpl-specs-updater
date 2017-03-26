@@ -1,4 +1,4 @@
-# Gulp BEM tmpl-specs updater (https://img.shields.io/github/release/MadMed677/gulp-bem-tmpl-specs-updater.svg?style=flat-square) ![github tags](https://img.shields.io/github/tag/MadMed677/gulp-bem-tmpl-specs-updater.svg?style=flat-square)
+# Gulp BEM tmpl-specs updater ![node release](https://img.shields.io/github/release/MadMed677/gulp-bem-tmpl-specs-updater.svg?style=flat-square) ![github tags](https://img.shields.io/github/tag/MadMed677/gulp-bem-tmpl-specs-updater.svg?style=flat-square)
 
 Плагин, для проверки и обновления шаблонов в magic-bundles и исходных блоках. Нужен для автоматической правки тестов.
 При запуске gulp плагина, проверяет magic-bundles и исходные тесты, если они различаются, то
