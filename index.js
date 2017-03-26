@@ -44,20 +44,18 @@ const gulpPrefixer = prefixText => {
     // prefixText = new Buffer(prefixText);
 
     return through((file, enc, cb) => {
-        const relativePath = file.relative;
-
         if (file.relative.split('/')[0].includes('blocks')) {
             const relativePath = file.relative;
             const relativeArray = relativePath.split('/');
 
             const level = relativeArray
-                .find((item) => item.includes('blocks'))
+                .find((item) => item.includes('.blocks'))
                 .replace(/\.blocks/, '');
             const block = relativeArray[relativeArray.length - 2]
                 .replace(/\.tmpl-specs/, '');
             const test = relativeArray[relativeArray.length - 1];
 
-            const result = {
+            const bundle = {
                 level,
                 block,
                 test,
@@ -65,18 +63,18 @@ const gulpPrefixer = prefixText => {
                 relativePath: 'blocks/' + relativePath
             };
 
-            tmplSpecs.push(result);
+            result.magicBundles.push(bundle);
         } else {
             const relativePath = file.relative;
             const relativeArray = relativePath.split('/');
 
-            const level = relativeArray[0]
+            const level = relativeArray[1]
                 .replace(/\.tmpl-specs/, '');
             const block = relativeArray[relativeArray.length - 2];
             const test = relativeArray[relativeArray.length - 1]
                 .replace(/\.bemhtml/, '')
 
-            const result = {
+            const bundle = {
                 level,
                 block,
                 test,
@@ -84,12 +82,13 @@ const gulpPrefixer = prefixText => {
                 relativePath: 'magic-bundles/' + relativePath
             };
 
-            magicBundles.push(result);
+            const hashPath = bundle.level + '/' + bundle.block + '/' + bundle.test;
+            result.tmplSpecs[hashPath] = bundle;
         }
 
-        cb(null, {magicBundles, tmplSpecs});
+        cb(null, result);
     }, (cb) => {
-        console.log(magicBundles);
+        console.log(result.magicBundles);
     });
 };
 
