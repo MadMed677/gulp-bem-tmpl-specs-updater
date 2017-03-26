@@ -13,23 +13,83 @@ const prefixStream = prefixText => {
 };
 
 const gulpPrefixer = prefixText => {
-    if (!prefixText) {
-        throw new PluginError(PLUGIN_NAME, 'Missing prefix text!');
-    }
+    let result = {
+        magicBundles: [],
+        tmplSpecs: {}
+        // magicBundles: [
+        // 	{
+        // 		level: 'desktop',
+        // 		block: 'test-block1',
+        // 		test: '10-default.html',
+        // 		type: 'magic-bundles'
+        // 	}
+        // ],
+        // tmplSpecs: {
+        // 	'common/test-block1/10-empty.html': {
+        // 		level: 'common',
+        // 		block: 'test-block1',
+        // 		test: '10-default.html',
+        // 		type: 'tmpl-specs'
+        // 	}
+        // }
+    };
 
-    prefixText = new Buffer(prefixText);
+    let magicBundles = [];
+    let tmplSpecs = [];
 
-    return through.obj((file, enc, cb) => {
-        console.log('hello world');
-        if (file.isNull()) {
-            return cb(null, file);
+    // if (!prefixText) {
+    //     throw new PluginError(PLUGIN_NAME, 'Missing prefix text!');
+    // }
+
+    // prefixText = new Buffer(prefixText);
+
+    return through((file, enc, cb) => {
+        const relativePath = file.relative;
+
+        if (file.relative.split('/')[0].includes('blocks')) {
+            const relativePath = file.relative;
+            const relativeArray = relativePath.split('/');
+
+            const level = relativeArray
+                .find((item) => item.includes('blocks'))
+                .replace(/\.blocks/, '');
+            const block = relativeArray[relativeArray.length - 2]
+                .replace(/\.tmpl-specs/, '');
+            const test = relativeArray[relativeArray.length - 1];
+
+            const result = {
+                level,
+                block,
+                test,
+                type: 'tmpl-specs',
+                relativePath: 'blocks/' + relativePath
+            };
+
+            tmplSpecs.push(result);
+        } else {
+            const relativePath = file.relative;
+            const relativeArray = relativePath.split('/');
+
+            const level = relativeArray[0]
+                .replace(/\.tmpl-specs/, '');
+            const block = relativeArray[relativeArray.length - 2];
+            const test = relativeArray[relativeArray.length - 1]
+                .replace(/\.bemhtml/, '')
+
+            const result = {
+                level,
+                block,
+                test,
+                type: 'magic-bundles',
+                relativePath: 'magic-bundles/' + relativePath
+            };
+
+            magicBundles.push(result);
         }
 
-        if (file.isBuffer()) {
-            file.contents = Buffer.concat([prefixText, file.contents]);
-        }
-
-        cb(null, file);
+        cb(null, {magicBundles, tmplSpecs});
+    }, (cb) => {
+        console.log(magicBundles);
     });
 };
 
