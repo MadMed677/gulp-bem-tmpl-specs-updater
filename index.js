@@ -1,6 +1,6 @@
 'use strict';
 
-const through = require('through2');
+const through = require('through2').obj;
 const compareFiles = require('save-compares-suggest');
 const eachSeries = require('async/eachSeries');
 const gutil = require('gulp-util');
