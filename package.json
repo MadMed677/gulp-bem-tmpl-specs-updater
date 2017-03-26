@@ -1,6 +1,6 @@
 {
   "name": "gulp-bem-tmpl-specs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "url": "https://github.com/MadMed677/gulp-bem-tmpl-specs-updater/issues"
   },
   "homepage": "https://github.com/MadMed677/gulp-bem-tmpl-specs-updater#readme",
-  "devDependencies": {
+  "dependencies": {
     "async": "2.2.0",
     "gulp-merge": "0.1.1",
     "gulp-util": "3.0.8",
