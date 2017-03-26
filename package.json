@@ -16,7 +16,16 @@
     "gulp",
     "plugin"
   ],
-  "author": "Anashev Artem, Nikolay Tolochnyy",
+  "author": [
+    {
+      "name": "Anashev Artem",
+      "mail": "madmed677@gmail.com"
+    },
+    {
+      "name": "Nikolay Tolochnyy",
+      "mail": "nikola-tolochny@mail.ru"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MadMed677/gulp-bem-tmpl-specs-updater/issues"
