@@ -1,4 +1,7 @@
+'use strict';
+
 const through = require('through2');
+const compareFiles = require('save-compares-suggest');
 const gutil = require('gulp-util');
 const helpers = require('./helpers');
 const PluginError = gutil.PluginError;
@@ -34,9 +37,6 @@ const gulpPrefixer = prefixText => {
         // }
     };
 
-    let magicBundles = [];
-    let tmplSpecs = [];
-
     // if (!prefixText) {
     //     throw new PluginError(PLUGIN_NAME, 'Missing prefix text!');
     // }
@@ -60,10 +60,11 @@ const gulpPrefixer = prefixText => {
                 block,
                 test,
                 type: 'tmpl-specs',
-                relativePath: 'blocks/' + relativePath
+                relativePath
             };
 
-            result.magicBundles.push(bundle);
+            const hashPath = bundle.level + '/' + bundle.block + '/' + bundle.test;
+            result.tmplSpecs[hashPath] = bundle;
         } else {
             const relativePath = file.relative;
             const relativeArray = relativePath.split('/');
@@ -79,16 +80,24 @@ const gulpPrefixer = prefixText => {
                 block,
                 test,
                 type: 'magic-bundles',
-                relativePath: 'magic-bundles/' + relativePath
+                relativePath
             };
 
-            const hashPath = bundle.level + '/' + bundle.block + '/' + bundle.test;
-            result.tmplSpecs[hashPath] = bundle;
+            result.magicBundles.push(bundle);
         }
 
         cb(null, result);
     }, (cb) => {
-        console.log(result.magicBundles);
+        const relativeItems = helpers.findRelativeItems(result.magicBundles, result.tmplSpecs);
+
+        eachSeries(relativeItems, (item, callback) => {
+            return compareFiles({
+                etalonPath: item.referenceTmplSpec.relativePath,
+                magicPath: item.referenceMagicBundle.relativePath
+            }).then(() => {
+                callback();
+            });
+        }, cb);
     });
 };
 

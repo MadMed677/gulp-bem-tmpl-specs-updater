@@ -1,3 +1,5 @@
+const devicesLevels = require('./devices-levels');
+
 /**
  * Проходим по всем magicBundle и сравниваем его с tmpl-specs, который нам нужен
  *
