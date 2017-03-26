@@ -2,6 +2,7 @@
 
 const through = require('through2');
 const compareFiles = require('save-compares-suggest');
+const eachSeries = require('async/eachSeries');
 const gutil = require('gulp-util');
 const helpers = require('./helpers');
 const PluginError = gutil.PluginError;
