@@ -25,7 +25,7 @@
 |   ├── ├── ├── ├── ├── 10-empty.html
 |   ├── ├── ├── ├── ├── 20-simple.html
 |   └── └── └── └── └── 30-extended.html
-|   └── ├── touch-pad
+|   └── └── touch-pad
 |   └── └── touch-phone
 |   ├── yamoney-project
 |   ├── ├── common.blocks
