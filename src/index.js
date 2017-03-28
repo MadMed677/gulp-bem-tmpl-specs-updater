@@ -8,7 +8,7 @@ const gutil = require('gulp-util');
 const helpers = require('./helpers');
 const PluginError = gutil.PluginError;
 
-const config = require('../config');
+const config = require('./config');
 const PLUGIN_NAME = config.PLUGIN_NAME;
 
 const prefixStream = prefixText => {
