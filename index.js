@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const through = require('through2').obj;
 const compareFiles = require('save-compares-suggest');
 const eachSeries = require('async/eachSeries');
@@ -7,7 +8,8 @@ const gutil = require('gulp-util');
 const helpers = require('./helpers');
 const PluginError = gutil.PluginError;
 
-const PLUGIN_NAME = 'gulp-bem-tmpl-specs-updater';
+const config = require('./config');
+const PLUGIN_NAME = config.PLUGIN_NAME;
 
 const prefixStream = prefixText => {
     const stream = through();
@@ -16,7 +18,15 @@ const prefixStream = prefixText => {
     return stream;
 };
 
-const gulpPrefixer = prefixText => {
+/**
+ * Entry point
+ *
+ * @param {Object} options - plugin options
+ * @param {Object} options.etalonPath - etalon path. What compares
+ * @param {Object} options.sourcePath - source path. With compares
+ * @return {Function}
+ */
+const gulpPrefixer = options => {
     let result = {
         magicBundles: [],
         tmplSpecs: {}
@@ -38,9 +48,17 @@ const gulpPrefixer = prefixText => {
         // }
     };
 
-    // if (!prefixText) {
-    //     throw new PluginError(PLUGIN_NAME, 'Missing prefix text!');
-    // }
+    if (!options) {
+        throw new PluginError(PLUGIN_NAME, 'Missing required options');
+    }
+
+    if (_.isEmpty(options)) {
+        throw new PluginError(PLUGIN_NAME, 'Options is empty');
+    }
+
+    if (!options.etalonPath || !options.sourcePath) {
+        throw new PluginError(PLUGIN_NAME, 'Missing required arguments. See documentation to fix it');
+    }
 
     // prefixText = new Buffer(prefixText);
 

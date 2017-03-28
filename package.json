@@ -1,6 +1,6 @@
 {
   "name": "gulp-bem-tmpl-specs-updater",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,14 @@
     "async": "2.2.0",
     "gulp-merge": "0.1.1",
     "gulp-util": "3.0.8",
+    "lodash": "4.17.4",
     "save-compares-suggest": "1.0.3",
     "through2": "2.0.3"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "gulp": "3.9.1",
+    "mocha": "3.2.0",
+    "vinyl": "2.0.1"
   }
 }
