@@ -1,5 +1,6 @@
 'use strict';
 
+const pick = require('lodash/pick');
 const fs = require('fs');
 const vinyl = require('vinyl');
 const gulp = require('gulp');
@@ -13,9 +14,31 @@ require('mocha');
 
 describe('gulp-bem-tmpl-specs-updater', () => {
     describe('# helpers', () => {
+        const magicBundles = require('./fixtures/magic-bundle');
+        const tmplSpecs = require('./fixtures/tmpl-specs');
+
         describe('# findRelativeItems function', () => {
+            const findRelativeItems = require('../src/helpers/find-relative-items');
+
             it('should be a function', () => {
                 expect(helpers.findRelativeItems).to.be.an.instanceOf(Function);
+            });
+
+            it('should return array of objects with 2 keys', () => {
+                const findedRelativeItems = findRelativeItems(magicBundles, tmplSpecs);
+
+                expect(findedRelativeItems).to.be.an.instanceOf(Array);
+                findedRelativeItems.forEach(item => {
+                    expect(item).to.have.all.keys('referenceMagicBundle', 'referenceTmplSpec');
+                });
+            });
+
+            it('should find correct paths', () => {
+                const findedRelativeItems = findRelativeItems(magicBundles, tmplSpecs);
+
+                findedRelativeItems.forEach(item => {
+                    expect(pick(item.referenceMagicBundle, ['block', 'test'])).to.eql(pick(item.referenceTmplSpec, ['block', 'test']));
+                });
             });
         });
     });
