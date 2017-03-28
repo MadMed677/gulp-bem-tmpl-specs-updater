@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "check-coverage": "./node_modules/.bin/istanbul check-coverage",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "test": "./node_modules/.bin/istanbul cover -x ./test _mocha -- -R spec test/index.js"
   },
   "repository": {
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
+    "codecov.io": "0.1.6",
     "gulp": "3.9.1",
     "istanbul": "0.4.5",
     "mocha": "3.2.0",
