@@ -11,7 +11,7 @@ before_script:
   - npm install -g gulp
   - npm i
 script:
-  - npm t
+  - npm run cover
   - npm run check-coverage
   - npm run build
 after_success:

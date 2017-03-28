@@ -14,7 +14,9 @@ require('mocha');
 describe('gulp-bem-tmpl-specs-updater', () => {
     describe('# helpers', () => {
         describe('# findRelativeItems function', () => {
-            // const
+            it('should be a function', () => {
+                expect(helpers.findRelativeItems).to.be.an.instanceOf(Function);
+            });
         });
     });
 
