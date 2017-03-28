@@ -5,10 +5,10 @@ const vinyl = require('vinyl');
 const gulp = require('gulp');
 const expect = require('chai').expect;
 const gutil = require('gulp-util');
-const helpers = require('../helpers');
+const helpers = require('../src/helpers');
 const PluginError = gutil.PluginError;
 
-const bemReplacer = require('../index');
+const bemReplacer = require('../src/index');
 require('mocha');
 
 describe('gulp-bem-tmpl-specs-updater', () => {
