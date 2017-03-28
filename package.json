@@ -1,8 +1,8 @@
 {
   "name": "gulp-bem-tmpl-specs-updater",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "check-coverage": "./node_modules/.bin/nyc check-coverage --statements 40 --branches 40 --lines 40 --functions 0",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
