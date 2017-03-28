@@ -12,3 +12,4 @@ before_script:
   - npm i
 script:
   - npm t
+  - npm run check-coverage
