@@ -25,11 +25,11 @@
     "dist",
     "README.md"
   ],
-  "author": [
-    {
-      "name": "Anashev Artem",
-      "mail": "madmed677@gmail.com"
-    },
+  "author": {
+    "name": "Anashev Artem",
+    "mail": "madmed677@gmail.com"
+  },
+  "contributors": [
     {
       "name": "Nikolay Tolochnyy",
       "mail": "nikola-tolochny@mail.ru"
