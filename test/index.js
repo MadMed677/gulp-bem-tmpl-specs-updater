@@ -5,12 +5,19 @@ const vinyl = require('vinyl');
 const gulp = require('gulp');
 const expect = require('chai').expect;
 const gutil = require('gulp-util');
+const helpers = require('../helpers');
 const PluginError = gutil.PluginError;
 
 const bemReplacer = require('../index');
 require('mocha');
 
 describe('gulp-bem-tmpl-specs-updater', () => {
+    describe('# helpers', () => {
+        describe('# findRelativeItems function', () => {
+            // const
+        });
+    });
+
     describe('# should throw error: ', () => {
         it('when options was missing', () => {
             expect(bemReplacer).to.throw('Missing required options');
