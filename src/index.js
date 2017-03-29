@@ -4,9 +4,7 @@ const _ = require('lodash');
 const through = require('through2').obj;
 const compareFiles = require('save-compares-suggest');
 const eachSeries = require('async/eachSeries');
-const gutil = require('gulp-util');
 const helpers = require('./helpers');
-const PluginError = gutil.PluginError;
 
 const config = require('./config');
 const PLUGIN_NAME = config.PLUGIN_NAME;
