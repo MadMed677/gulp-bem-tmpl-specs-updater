@@ -9,7 +9,7 @@ const gutil = require('gulp-util');
 const helpers = require('../src/helpers');
 const PluginError = gutil.PluginError;
 
-const bemReplacer = require('../src/index');
+const bemReplacer = require('../src');
 require('mocha');
 
 describe('gulp-bem-tmpl-specs-updater', () => {
@@ -65,19 +65,8 @@ describe('gulp-bem-tmpl-specs-updater', () => {
     });
 
     describe('# gulp task', () => {
-        describe('# should throw error: ', () => {
-            it('when options was missing', () => {
-                expect(bemReplacer).to.throw('Missing required options');
-            });
-
-            it('when options is empty', () => {
-                expect(bemReplacer.bind(null, {})).to.throw('Options is empty');
-            });
-
-            it('when on of required options was missing', () => {
-                expect(bemReplacer.bind(null, {etalonPath: ''})).to.throw('Missing required arguments. See documentation to fix it');
-                expect(bemReplacer.bind(null, {sourcePath: ''})).to.throw('Missing required arguments. See documentation to fix it');
-            });
+        describe('# bemReplacer()', () => {
+            // it();
         });
     });
 });

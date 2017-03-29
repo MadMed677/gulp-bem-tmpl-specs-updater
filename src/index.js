@@ -11,13 +11,6 @@ const PluginError = gutil.PluginError;
 const config = require('./config');
 const PLUGIN_NAME = config.PLUGIN_NAME;
 
-const prefixStream = prefixText => {
-    const stream = through();
-    stream.write(prefixText);
-
-    return stream;
-};
-
 /**
  * Entry point
  *
@@ -26,7 +19,7 @@ const prefixStream = prefixText => {
  * @param {Object} options.sourcePath - source path. With compares
  * @return {Function}
  */
-const gulpPrefixer = options => {
+const gulpPrefixer = () => {
     let result = {
         magicBundles: [],
         tmplSpecs: {}
@@ -47,20 +40,6 @@ const gulpPrefixer = options => {
         // 	}
         // }
     };
-
-    if (!options) {
-        throw new PluginError(PLUGIN_NAME, 'Missing required options');
-    }
-
-    if (_.isEmpty(options)) {
-        throw new PluginError(PLUGIN_NAME, 'Options is empty');
-    }
-
-    if (!options.etalonPath || !options.sourcePath) {
-        throw new PluginError(PLUGIN_NAME, 'Missing required arguments. See documentation to fix it');
-    }
-
-    // prefixText = new Buffer(prefixText);
 
     return through((file, enc, cb) => {
         if (file.relative.split('/')[0].includes('blocks')) {
@@ -106,7 +85,7 @@ const gulpPrefixer = options => {
         }
 
         cb(null, result);
-    }, (cb) => {
+    }, cb => {
         const relativeItems = helpers.findRelativeItems(result.magicBundles, result.tmplSpecs);
 
         eachSeries(relativeItems, (item, callback) => {
