@@ -1,10 +1,10 @@
 {
   "name": "gulp-bem-tmpl-specs-updater",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "check-coverage": "./node_modules/.bin/nyc check-coverage --statements 40 --branches 40 --lines 40 --functions 40",
+    "check-coverage": "./node_modules/.bin/nyc check-coverage",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "prebuild": "rm -rf dist",
     "build": "./node_modules/.bin/babel --copy-files --out-dir dist src",

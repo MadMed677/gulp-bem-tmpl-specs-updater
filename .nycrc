@@ -1,0 +1,9 @@
+{
+    "lines": "40",
+    "statements": "40",
+    "functions": "40",
+    "branches": "40",
+    "reporter": ["lcov", "text"],
+    "cache": true,
+    "check-coverage": true
+}
