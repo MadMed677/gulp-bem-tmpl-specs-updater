@@ -24,7 +24,7 @@ module.exports = {
         type: 'tmpl-specs'
     },
     'touch-phone/user-information/10-empty.html': {
-        level: 'touch',
+        level: 'touch-phone',
         block: 'user-information',
         test: '10-empty.html',
         type: 'tmpl-specs'

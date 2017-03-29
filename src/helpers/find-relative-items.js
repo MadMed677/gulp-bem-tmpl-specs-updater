@@ -5,12 +5,12 @@ const devicesLevels = require('./devices-levels');
  *
  * @param {Array} magicBundles массив для сравнения собранных тестов
  * @param {Object} tmplSpecs - hash map, где ключ, путь файла состоящий из
- * level, block, test. Содержит эталонный html
+ *                 level, block, test. Содержит эталонный html
  * @return {Object}
  */
-const findRelativeItems = (magicBundles, tmplSpecs) =>
+const findRelativeItems = (magicBundles = [], tmplSpecs = {}) =>
     magicBundles
-        .map((magicBundle) => {
+        .map(magicBundle => {
             // Получаем уровни, конкретного девайса
             const magicDeviceLevels = devicesLevels[magicBundle.level];
 
@@ -26,7 +26,7 @@ const findRelativeItems = (magicBundles, tmplSpecs) =>
 
             return {referenceMagicBundle, referenceTmplSpec};
         })
-        .filter((references) =>
+        .filter(references =>
             references.referenceMagicBundle && references.referenceTmplSpec
         );
 

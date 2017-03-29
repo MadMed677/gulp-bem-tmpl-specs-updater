@@ -19,9 +19,14 @@ describe('gulp-bem-tmpl-specs-updater', () => {
 
         describe('# findRelativeItems function', () => {
             const findRelativeItems = require('../src/helpers/find-relative-items');
+            const devicesLevels = require('../src/helpers/devices-levels');
 
             it('should be a function', () => {
                 expect(helpers.findRelativeItems).to.be.an.instanceOf(Function);
+            });
+
+            it('should return empty array', () => {
+                expect(helpers.findRelativeItems()).to.eql([]);
             });
 
             it('should return array of objects with 2 keys', () => {
@@ -38,6 +43,22 @@ describe('gulp-bem-tmpl-specs-updater', () => {
 
                 findedRelativeItems.forEach(item => {
                     expect(pick(item.referenceMagicBundle, ['block', 'test'])).to.eql(pick(item.referenceTmplSpec, ['block', 'test']));
+                });
+            });
+
+            it('should related correct levels', () => {
+                const findedRelativeItems = findRelativeItems(magicBundles, tmplSpecs);
+
+                findedRelativeItems.forEach(item => {
+                    const magicBundle = item.referenceMagicBundle;
+                    const tmplSpec = item.referenceTmplSpec;
+
+                    const magicDeviceLevels = devicesLevels[magicBundle.level];
+
+                    const magicBundleLevelIndex = magicDeviceLevels.findIndex(level => level === magicBundle.level);
+                    const tmplSpecsLevelIndex = magicDeviceLevels.findIndex(level => level === tmplSpec.level);
+
+                    expect(magicBundleLevelIndex).to.have.most(tmplSpecsLevelIndex);
                 });
             });
         });
