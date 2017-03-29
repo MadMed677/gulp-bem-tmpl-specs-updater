@@ -13,8 +13,8 @@ node_js:
 before_script:
   - npm i
 script:
+  - npm t
   - npm run cover
   - npm run check-coverage
-  - npm run build
 after_success:
   - npm run report-coverage
