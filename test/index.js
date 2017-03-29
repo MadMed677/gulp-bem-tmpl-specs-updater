@@ -64,18 +64,20 @@ describe('gulp-bem-tmpl-specs-updater', () => {
         });
     });
 
-    describe('# should throw error: ', () => {
-        it('when options was missing', () => {
-            expect(bemReplacer).to.throw('Missing required options');
-        });
+    describe('# gulp task', () => {
+        describe('# should throw error: ', () => {
+            it('when options was missing', () => {
+                expect(bemReplacer).to.throw('Missing required options');
+            });
 
-        it('when options is empty', () => {
-            expect(bemReplacer.bind(null, {})).to.throw('Options is empty');
-        });
+            it('when options is empty', () => {
+                expect(bemReplacer.bind(null, {})).to.throw('Options is empty');
+            });
 
-        it('when on of required options was missing', () => {
-            expect(bemReplacer.bind(null, {etalonPath: ''})).to.throw('Missing required arguments. See documentation to fix it');
-            expect(bemReplacer.bind(null, {sourcePath: ''})).to.throw('Missing required arguments. See documentation to fix it');
+            it('when on of required options was missing', () => {
+                expect(bemReplacer.bind(null, {etalonPath: ''})).to.throw('Missing required arguments. See documentation to fix it');
+                expect(bemReplacer.bind(null, {sourcePath: ''})).to.throw('Missing required arguments. See documentation to fix it');
+            });
         });
     });
 });
