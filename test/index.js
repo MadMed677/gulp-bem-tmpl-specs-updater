@@ -64,7 +64,16 @@ describe('gulp-bem-tmpl-specs-updater', () => {
 
     describe('# gulp task', () => {
         describe('# bemReplacer()', () => {
-            // it();
+            it('should be a functon', () => {
+                expect(bemReplacer).to.be.an.instanceOf(Function);
+            });
+
+            it('should be a stream', done => {
+                const stream = bemReplacer();
+                stream.end();
+
+                done();
+            });
         });
     });
 });
