@@ -24,9 +24,10 @@
 
 ```js
 const bemReplacer = require('gulp-bem-tmpl-specs-updater');
+const gulp = require('gulp');
 
 gulp.task('updater-tmpl-specs', () =>
-    gulp.src(['./magic-bundles/**/*.html', './blocks/**/*.tmpl-specs/*.html', {
+    gulp.src(['./magic-bundles/**/*.html', './blocks/**/*.tmpl-specs/*.html'], {
         base: './'
     })
         .pipe(bemReplacer())
